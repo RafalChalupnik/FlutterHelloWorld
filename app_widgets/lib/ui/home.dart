@@ -3,17 +3,49 @@ import 'package:flutter/material.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(
+    return Center(
+      child: Container(
       alignment: Alignment.center,
+      padding: EdgeInsets.only(top: 30, left: 10),
       color: Colors.deepOrangeAccent,
-      child: Text("Pizza",
-        style: TextStyle(
-          fontSize: 80,
-          decoration: TextDecoration.none,
-          fontFamily: 'Oxygen',
-          fontWeight: FontWeight.normal
-        )
-      ),
+      child: Column(children: <Widget>[
+        Row(children: <Widget>[
+          Expanded(child: Text("Margherita",
+            style: TextStyle(
+              fontSize: 30,
+              decoration: TextDecoration.none,
+              fontFamily: 'Oxygen',
+              fontWeight: FontWeight.normal
+            )
+          )),
+          Expanded(child: Text("Tomato, Mozzarella, Basil",
+            style: TextStyle(
+              fontSize: 20,
+              decoration: TextDecoration.none,
+              fontFamily: 'Oxygen',
+              fontWeight: FontWeight.normal
+            )
+          ))
+        ]),
+        Row(children: <Widget>[
+          Expanded(child: Text("Marinara",
+            style: TextStyle(
+              fontSize: 30,
+              decoration: TextDecoration.none,
+              fontFamily: 'Oxygen',
+              fontWeight: FontWeight.normal
+            )
+          )),
+          Expanded(child: Text("Tomato, Garlic",
+            style: TextStyle(
+              fontSize: 20,
+              decoration: TextDecoration.none,
+              fontFamily: 'Oxygen',
+              fontWeight: FontWeight.normal
+            )
+          ))
+        ])
+      ])
     ));
   }
 }
