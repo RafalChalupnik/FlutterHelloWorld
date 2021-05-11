@@ -6,10 +6,14 @@ class Home extends StatelessWidget {
     return Center(child: Container(
       alignment: Alignment.center,
       color: Colors.deepOrangeAccent,
-      // width: 192.0,
-      // height: 96.0,
-      // margin: EdgeInsets.only(left: 50.0),
-      child: Text("Pizza"),
+      child: Text("Pizza",
+        style: TextStyle(
+          fontSize: 80,
+          decoration: TextDecoration.none,
+          fontFamily: 'Oxygen',
+          fontWeight: FontWeight.normal
+        )
+      ),
     ));
   }
 }
