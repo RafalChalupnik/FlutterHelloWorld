@@ -44,8 +44,18 @@ class Home extends StatelessWidget {
               fontWeight: FontWeight.normal
             )
           ))
-        ])
+        ]),
+        PizzaImageWidget()
       ])
     ));
+  }
+}
+
+class PizzaImageWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var pizzaAsset = AssetImage('images/pizza.png');
+    var image = Image(image: pizzaAsset, width: 400, height: 400);
+    return Container(child: image);
   }
 }
