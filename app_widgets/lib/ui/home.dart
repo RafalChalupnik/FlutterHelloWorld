@@ -45,7 +45,8 @@ class Home extends StatelessWidget {
             )
           ))
         ]),
-        PizzaImageWidget()
+        PizzaImageWidget(),
+        OrderButton()
       ])
     ));
   }
@@ -57,5 +58,31 @@ class PizzaImageWidget extends StatelessWidget {
     var pizzaAsset = AssetImage('images/pizza.png');
     var image = Image(image: pizzaAsset, width: 400, height: 400);
     return Container(child: image);
+  }
+}
+
+class OrderButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 50),
+      child: ElevatedButton(
+        child: Text("Order your Pizza!"),
+        onPressed: () {
+          order(context);
+        },
+    ));
+  }
+
+  void order(BuildContext context) {
+    var alert = AlertDialog(
+      title: Text("Order Completed"),
+      content: Text("Thanks for your order"),
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => alert
+    );
   }
 }
