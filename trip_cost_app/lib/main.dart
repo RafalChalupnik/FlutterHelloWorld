@@ -8,27 +8,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello You',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HelloYou(),
+      title: 'Trip Cost Calculator',
+      home: FuelForm(),
     );
   }
 }
 
-class HelloYou extends StatefulWidget {
+class FuelForm extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _HelloYouState();
+  State<StatefulWidget> createState() => _FuelFormState();
 }
 
-class _HelloYouState extends State<HelloYou> {
-  String name = '';
+class _FuelFormState extends State<FuelForm> {
+  
   final _currencies = ['Dollars', 'Euro', 'Pounds'];
   String _currency = 'Dollars';
+  TextEditingController distanceController = TextEditingController();
+  String result = '';
 
   @override
   Widget build(BuildContext context) {
+    TextStyle textStyle = Theme.of(context).textTheme.headline6;
     return Scaffold(
       appBar: AppBar(
         title: Text("Hello"),
@@ -39,14 +39,16 @@ class _HelloYouState extends State<HelloYou> {
         child: Column(
           children: [
             TextField(
+              controller: distanceController,
               decoration: InputDecoration(
-                hintText: 'Please insert your name'
+                labelText: 'Distance',
+                hintText: 'e.g. 124',
+                labelStyle: textStyle,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5)
+                )
               ),
-              onChanged: (String string) {
-                setState(() {
-                  name = string;
-                });
-              },
+              keyboardType: TextInputType.number
             ),
             DropdownButton(
               items: _currencies.map(
@@ -57,8 +59,24 @@ class _HelloYouState extends State<HelloYou> {
               value: _currency,
               onChanged: (value) {
                 _onDropdownChanged(value);
-              }),
-            Text('Hello ' + name + '!')
+              }
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColorDark),
+                foregroundColor: MaterialStateProperty.all(Theme.of(context).primaryColorLight)
+              ),
+              onPressed: () {
+                setState(() {
+                  result = distanceController.text;
+                });
+              },
+              child: Text(
+                'Submit',
+                textScaleFactor: 1.5,
+              )
+            ),
+            Text('Hello ' + result + '!')
           ]
         )
       )
